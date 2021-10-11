@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,7 +37,8 @@ class _DicePageState extends State<DicePage> {
                 // TextButton has default padding 8.0
                 onPressed: () {
                   setState(() {
-                    leftDiceNumber = 2;
+                    // nextInt will output a random number from 0 - 5
+                    leftDiceNumber = Random().nextInt(6) + 1;
                   });
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png'),
