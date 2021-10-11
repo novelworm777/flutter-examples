@@ -37,11 +37,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                 // TextButton has default padding 8.0
                 onPressed: () {
-                  setState(() {
-                    // nextInt will output a random number from 0 - 5
-                    leftDiceNumber = Random().nextInt(6) + 1;
-                    rightDiceNumber = Random().nextInt(6) + 1;
-                  });
+                  changeDiceNumber();
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png'),
               ),
@@ -53,11 +49,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                 // TextButton has default padding 8.0
                 onPressed: () {
-                  setState(() {
-                    // nextInt will output a random number from 0 - 5
-                    leftDiceNumber = Random().nextInt(6) + 1;
-                    rightDiceNumber = Random().nextInt(6) + 1;
-                  });
+                  changeDiceNumber();
                 },
                 child: Image.asset('images/dice$rightDiceNumber.png'),
               ),
@@ -66,5 +58,13 @@ class _DicePageState extends State<DicePage> {
         ],
       ),
     );
+  }
+
+  void changeDiceNumber() {
+    setState(() {
+      // nextInt will output a random number from 0 - 5
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 }
