@@ -40,6 +40,7 @@ class _DicePageState extends State<DicePage> {
                   setState(() {
                     // nextInt will output a random number from 0 - 5
                     leftDiceNumber = Random().nextInt(6) + 1;
+                    rightDiceNumber = Random().nextInt(6) + 1;
                   });
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png'),
@@ -54,6 +55,7 @@ class _DicePageState extends State<DicePage> {
                 onPressed: () {
                   setState(() {
                     // nextInt will output a random number from 0 - 5
+                    leftDiceNumber = Random().nextInt(6) + 1;
                     rightDiceNumber = Random().nextInt(6) + 1;
                   });
                 },
