@@ -34,26 +34,26 @@ class StoryBrain {
         choice2: '')
   ];
 
-  String getStory() => this._storyData[0].storyTitle;
+  String getStory() => this._storyData[this._storyNumber].storyTitle;
 
-  String getChoice1() => this._storyData[0].choice1;
+  String getChoice1() => this._storyData[this._storyNumber].choice1;
 
-  String getChoice2() => this._storyData[0].choice2;
+  String getChoice2() => this._storyData[this._storyNumber].choice2;
 
   void nextStory(int choiceNumber) {
     if (this._storyNumber == 0)
-      choiceNumber == 1 ? this._storyNumber = 2 : this._storyNumber = 1;
+      this._storyNumber = choiceNumber == 1 ? 2 : 1;
     else if (this._storyNumber == 1)
-      choiceNumber == 1 ? this._storyNumber = 2 : this._storyNumber = 3;
+      this._storyNumber = choiceNumber == 1 ? 2 : 3;
+    else if (this._storyNumber == 2)
+      this._storyNumber = choiceNumber == 1 ? 5 : 4;
     else
-      choiceNumber == 1 ? this._storyNumber = 5 : this._storyNumber = 4;
+      restart();
   }
+
+  void restart() => this._storyNumber = 0;
 }
 
-//TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
-
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
-
-//TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
 
 //TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
