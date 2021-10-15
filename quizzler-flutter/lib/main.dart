@@ -67,15 +67,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                // quizBrain.questionBank[questionNumber].questionAnswer = true;
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == true)
-                  print("user got it right!");
-                else
-                  print("user got it wrong!");
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -94,14 +86,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == false)
-                  print("user got it right!");
-                else
-                  print("user got it wrong!");
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
             ),
           ),
@@ -111,6 +96,18 @@ class _QuizPageState extends State<QuizPage> {
         ),
       ],
     );
+  }
+
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    setState(() {
+      if (userPickedAnswer == correctAnswer)
+        scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+      else
+        scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+
+      quizBrain.nextQuestion();
+    });
   }
 }
 
