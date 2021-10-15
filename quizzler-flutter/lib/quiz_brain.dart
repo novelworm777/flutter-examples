@@ -41,4 +41,11 @@ class QuizBrain {
 
   bool getQuestionAnswer() =>
       this._questionBank[this._questionNumber].questionAnswer;
+
+  bool isFinished() {
+    if (this._questionNumber == this._questionBank.length - 1) return true;
+    return false;
+  }
+
+  void reset() => this._questionNumber = 0;
 }
