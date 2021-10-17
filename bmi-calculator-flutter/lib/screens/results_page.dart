@@ -5,12 +5,18 @@ import '../constants.dart';
 import '../components/reusable_card.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String resultText;
+  final String bmiResult;
+  final String interpretation;
+
+  ResultsPage(
+      {@required this.resultText,
+      @required this.bmiResult,
+      @required this.interpretation});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("BMI Calculator"),
-      ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,10 +36,10 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Normal", style: kResultTextStyle),
-                  Text("18.3", style: kBMITextStyle),
+                  Text(resultText.toUpperCase(), style: kResultTextStyle),
+                  Text(bmiResult, style: kBMITextStyle),
                   Text(
-                    "Your BMI result is quite low, you should eat more!",
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
