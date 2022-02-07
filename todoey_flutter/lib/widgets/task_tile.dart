@@ -19,7 +19,8 @@ class _TaskTileState extends State<TaskTile> {
       ),
       trailing: TaskCheckbox(
         checkboxState: isChecked,
-        toggleCheckboxState: (bool? checkboxState) { // callbacks
+        toggleCheckboxState: (bool? checkboxState) {
+          // callbacks
           setState(() {
             isChecked = checkboxState!;
           });
